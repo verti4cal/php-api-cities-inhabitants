@@ -42,6 +42,10 @@
 # Build data
 /build/
 
+# env
+.env.local
+.env.*.local
+
 # Composer PHAR
 /composer.phar
 
@@ -50,3 +54,10 @@
 
 # Embedded web-server pid file
 /.web-server-pid
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+
+.phpunit.result.cache
+/tests/coverage

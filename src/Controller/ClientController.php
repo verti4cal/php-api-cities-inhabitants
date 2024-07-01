@@ -49,7 +49,7 @@ class ClientController extends AbstractController
         );
     }
 
-    #[Route('/', name: 'post', methods: ['POST'])]
+    #[Route('', name: 'post', methods: ['POST'])]
     public function post(#[MapRequestPayload] ClientDTO $dto): JsonResponse
     {
         return $this->json($this->clientService->createClient(
@@ -73,15 +73,25 @@ class ClientController extends AbstractController
     #[Route('/{id}', name: 'put', methods: ['PUT'])]
     public function put(int $id, #[MapRequestPayload] ClientDTO $dto): JsonResponse
     {
-        return $this->json($this->clientService->updateClient(
-            $id,
-            $dto->firstName,
-            $dto->familyName,
-            $dto->age,
-            $dto->gender,
-            $dto->IBAN,
-            $dto->city,
-            $dto->children
-        ));
+        $context = (new ObjectNormalizerContextBuilder())
+            ->withGroups('client:read')
+            ->toArray();
+
+        return JsonResponse::fromJsonString(
+            $this->serializer->serialize(
+                $this->clientService->updateClient(
+                    $id,
+                    $dto->firstName,
+                    $dto->familyName,
+                    $dto->age,
+                    $dto->gender,
+                    $dto->IBAN,
+                    $dto->city,
+                    $dto->children
+                ),
+                'json',
+                $context
+            )
+        );
     }
 }

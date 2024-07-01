@@ -73,20 +73,20 @@ class ClientRepository extends ServiceEntityRepository
             if (is_numeric($expenses)) {
                 $cb
                     ->groupBy('c.id')
-                    ->andHaving('SUM(p.price) = :expenses')
+                    ->andHaving('SUM(p.price * p.quantity) = :expenses')
                     ->setParameter('expenses', $expenses);
             } else {
                 switch ($expenses) {
                     case 'min':
                         $cb
                             ->groupBy('c.id')
-                            ->addOrderBy('SUM(p.price)', 'ASC')
+                            ->addOrderBy('SUM(p.price * p.quantity)', 'ASC')
                             ->setMaxResults(3);
                         break;
                     case 'max':
                         $cb
                             ->groupBy('c.id')
-                            ->addOrderBy('SUM(p.price)', 'DESC')
+                            ->addOrderBy('SUM(p.price * p.quantity)', 'DESC')
                             ->setMaxResults(3);
                         break;
                 }

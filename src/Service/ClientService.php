@@ -81,6 +81,15 @@ class ClientService
         $this->entityManager->flush();
     }
 
+    /**
+     * 
+     * @param string|null $city 
+     * @param int|null $children 
+     * @param null|int|string $age 
+     * @param null|int|string $expenses 
+     * @param null|int|string $items 
+     * @return Client[]
+     */
     public function findClients(
         string $city = null,
         int $children = null,

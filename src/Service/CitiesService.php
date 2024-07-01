@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Client;
 use App\Repository\ClientRepository;
 
 class CitiesService
@@ -10,6 +11,14 @@ class CitiesService
     {
     }
 
+    /**
+     * 
+     * @param string|null $spender 
+     * @param string|null $clients 
+     * @param string|null $age 
+     * @param string|null $children 
+     * @return Client[]
+     */
     public function findByFilter(
         string $spender = null,
         string $clients = null,

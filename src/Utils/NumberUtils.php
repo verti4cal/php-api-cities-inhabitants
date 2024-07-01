@@ -4,7 +4,12 @@ namespace App\Utils;
 
 class NumberUtils
 {
-    public static function fibonacci($n): array
+    /**
+     * 
+     * @param int $n 
+     * @return array<int>
+     */
+    public static function fibonacci(int $n): array
     {
         $result = [];
         $num1 = 0;

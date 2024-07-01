@@ -149,12 +149,12 @@ class ClientRepository extends ServiceEntityRepository
                 case 'min':
                     $cb
                         ->join('c.purchases', 'p')
-                        ->addOrderBy('SUM(p.price)', 'ASC');
+                        ->addOrderBy('SUM(p.price * p.quantity)', 'ASC');
                     break;
                 case 'max':
                     $cb
                         ->join('c.purchases', 'p')
-                        ->addOrderBy('SUM(p.price)', 'DESC');
+                        ->addOrderBy('SUM(p.price * p.quantity)', 'DESC');
                     break;
             }
         }

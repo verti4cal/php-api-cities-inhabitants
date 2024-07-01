@@ -264,14 +264,14 @@ class PurchaseFixtures extends Fixture
             $purchaseEntity->setClient($this->getReference('client_' . $purchase['ClientID']));
             $purchaseEntity->setItemName($purchase['ItemName']);
             $purchaseEntity->setQuantity($purchase['Quantity']);
-            $purchaseEntity->setPrice($purchase['Price']);
+            $purchaseEntity->setPrice(intval($purchase['Price']));
             $manager->persist($purchaseEntity);
         }
 
         $manager->flush();
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             ClientFixtures::class,

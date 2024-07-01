@@ -198,8 +198,6 @@ class ClientRepository extends ServiceEntityRepository
             }
         }
 
-        var_dump($cb->getQuery()->getSQL());
-
         return $cb
             ->getQuery()
             ->getResult(Query::HYDRATE_SCALAR_COLUMN);

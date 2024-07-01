@@ -15,35 +15,35 @@ class Client
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?string $familyName = null;
 
     #[ORM\Column]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?int $age = null;
 
     #[ORM\Column(enumType: GenderEnum::class)]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?GenderEnum $gender = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?string $iban = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?string $city = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(['client:read'])]
+    #[Groups(['client:read', 'purchase:read'])]
     private ?int $children = null;
 
     /**

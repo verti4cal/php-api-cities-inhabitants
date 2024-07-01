@@ -28,6 +28,7 @@ up: ## Start the docker image in detached mode (no logs)
 
 dev: ## Start the dev docker image in detached mode (no logs)
 	@$(DOCKER_COMP) -f compose.yaml -f compose.dev.yaml up --detach --remove-orphans --force-recreate
+	@$(SYMFONY) doctrine:database:drop --force
 	@$(SYMFONY) doctrine:database:create --if-not-exists
 	@$(SYMFONY) doctrine:migrations:migrate --no-interaction
 	@$(SYMFONY) doctrine:fixtures:load --no-interaction
